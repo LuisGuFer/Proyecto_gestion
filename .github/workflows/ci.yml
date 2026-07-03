@@ -1,0 +1,42 @@
+name: CI - Biblioteca Virtual
+
+# Integracion Continua: este workflow se ejecuta automaticamente cada vez
+# que se sube codigo (push) o se abre un Pull Request hacia main/develop.
+on:
+  push:
+    branches: [ main, develop, version-1, version-2 ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    name: Construir y probar
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Ejecutar pruebas
+        run: npm test
+
+      - name: Verificar que el servidor arranca correctamente
+        run: |
+          node server.js &
+          SERVER_PID=$!
+          sleep 2
+          curl --fail http://localhost:3000/api/version
+          kill $SERVER_PID
