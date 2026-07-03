@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Biblioteca Virtual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead__rule"></div>
+    <h1 class="masthead__title">Biblioteca Virtual</h1>
+    <p class="masthead__subtitle">Catálogo</p>
+    <div class="masthead__rule"></div>
+    <p class="masthead__version" id="version-badge">cargando versión…</p>
+  </header>
+
+  <main class="content">
+
+    <!-- ===================== CATALOGO (Version 1) ===================== -->
+    <section class="panel is-active" id="panel-catalogo">
+      <form class="card-form" id="form-libro">
+        <h2 class="card-form__title">Registrar libro</h2>
+        <div class="card-form__row">
+          <label>Título<input type="text" name="titulo" required /></label>
+          <label>Autor<input type="text" name="autor" required /></label>
+          <label>ISBN<input type="text" name="isbn" required /></label>
+        </div>
+        <button type="submit" class="btn btn--primary">Registrar</button>
+        <span class="form-message" id="msg-libro"></span>
+      </form>
+
+      <div class="catalog-toolbar">
+        <input type="search" id="buscar-input" placeholder="Buscar por título, autor o ISBN…" />
+      </div>
+
+      <div class="catalog" id="catalogo-grid"></div>
+    </section>
+
+  </main>
+
+  <footer class="footnote">
+    <p>Proyecto académico — Gestión de la Configuración de Software</p>
+  </footer>
+
+<script src="script.js"></script>
+</body>
+</html>
