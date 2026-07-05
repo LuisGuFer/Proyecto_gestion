@@ -26,5 +26,12 @@
     "autor": "Adalberto Herdoiza",
     "isbn": "888-888-888",
     "disponible": true
+  },
+  {
+    "id": 5,
+    "titulo": "El castillo vagabundo",
+    "autor": "Milena Ramos",
+    "isbn": "333-5555555555",
+    "disponible": true
   }
 ]
