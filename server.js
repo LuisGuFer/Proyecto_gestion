@@ -1,7 +1,15 @@
-const app = require('./src/app');
+const express = require("express");
+
+const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+app.use(express.json());
+
+app.get("/", (req, res) => {
+    res.send("API desplegada correctamente en Railway");
+});
+
 app.listen(PORT, () => {
-  console.log(`Biblioteca Virtual escuchando en http://localhost:${PORT}`);
+    console.log(`Servidor ejecutándose en el puerto ${PORT}`);
 });
